@@ -8,3 +8,16 @@ import { makeFolder } from './util/filesystem';
 // Parse the argument object.
 const args = argParser.parseArgs();
 
+githubClient.query({
+  query: GITHUB_USER_QUERY
+}).then(res => processRepositories(args, res));
+
+function processRepositories(args, repositories) {
+  const data = repositories['data']['viewer']['repositories']['nodes'];
+  data.forEach(repo => processRepository(args, repo));
+}
+
+function processRepository(args, repository) {
+  const repoDirectory = path.resolve(args.directory, getName(repository));
+  makeFolder(repoDirectory).then(console.log("Yay"));
+}

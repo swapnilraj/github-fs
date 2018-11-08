@@ -23,5 +23,7 @@ export function getName(repository) {
  * Returns a string summary of the repository object.
  */
 export function summarizeRepository(repository) {
-
+  return new Promise((resolve, reject) => {
+    resolve(getCollaborators(repository).join('\n'));
+  });
 }

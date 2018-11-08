@@ -13,16 +13,23 @@ function getDescription(repository) {
 }
 
 /**
- * Returns a commit dates for teh repository, if function
+ * Returns a commit dates for the repository, if function
  * f is supplied then f function is mapped over the dates.
  */
-export function getCommitDates(repository, f = x => x) {
+function getCommitDates(repository, f = x => x) {
   try {
     return repository['defaultBranchRef']['target']['history']['edges']
       .map(n => f(n['node']['committedDate']))
   } catch(e) {
     return [];
   }
+}
+
+/**
+ * Returns a list of languages used in a repository.
+ */
+function getLanguages(repository) {
+  return repository['languages']['edges'].map(n => n['node']['name']);
 }
 
 /**
@@ -46,6 +53,9 @@ ${getCollaborators(repository).join('\n')}
 
 ## Commits
 ${getCommitDates(repository).join('\n')}
+
+## Languages
+${getLanguages(repository).join('\n')}
 `;
 
     resolve(summary);

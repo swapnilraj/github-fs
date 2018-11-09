@@ -1,5 +1,8 @@
-import { MAX_REPOS_FETCH } from './constants';
+import { resolve } from 'path';
+
 import { ArgumentParser } from 'argparse';
+
+import { MAX_REPOS_FETCH } from './constants';
 
 export const argParser = new ArgumentParser({
   addHelp: true,
@@ -18,6 +21,14 @@ argParser.addArgument(
   ['-d', '--directory'],
   {
     help: 'Working directory for the project',
-    defaultValue: process.cwd(),
+    defaultValue: resolve(process.cwd(), 'github.com'),
   }
 );
+
+argParser.addArgument(
+  ['-e', '--explorer'],
+  {
+    help: 'Explorer command for rhe project',
+    defaultValue: 'vim',
+  }
+)

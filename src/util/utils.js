@@ -2,7 +2,7 @@ import { resolve } from 'path';
 
 import { ArgumentParser } from 'argparse';
 
-import { MAX_REPOS_FETCH } from './constants';
+import { DEFAULT_EXPLORER, MAX_REPOS_FETCH } from './constants';
 
 export const argParser = new ArgumentParser({
   addHelp: true,
@@ -28,7 +28,7 @@ argParser.addArgument(
 argParser.addArgument(
   ['-e', '--explorer'],
   {
-    help: 'Explorer command for rhe project',
-    defaultValue: 'vim',
+    help: 'Explorer command for the project',
+    defaultValue: DEFAULT_EXPLORER,
   }
 )

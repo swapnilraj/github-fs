@@ -40,3 +40,10 @@ Optional arguments:
   -e EXPLORER, --explorer EXPLORER
                         Explorer command for the project.
 ```
+
+## Sample Screens
+
+[Repos screen](https://i.imgur.com/JlYWjIG.png)
+
+
+[Summary for a repo](https://i.imgur.com/yMIifGD.png)
